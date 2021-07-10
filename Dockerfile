@@ -9,9 +9,32 @@ RUN apk add --no-cache \
       freetype-dev \
       libjpeg-turbo-dev \
       libpng-dev \
-    && docker-php-ext-configure gd \
+      xvfb \
+      wget \
+      zip unzip \
+      acl \
+      libwebp-dev \
+      ttf-freefont \
+      fontconfig \
+      openssh-client \
+      libzip-dev \
+      ssmtp \
+      freetype-dev \
+      freetype \
+      libpng \
+      icu-dev \
+      libmcrypt-dev \
+      libmcrypt \
+      libldap \
+      zlib-dev \
+      libzip \
+      php7-exif
+
+RUN docker-php-ext-configure intl --enable-intl && \
+    docker-php-ext-configure gd \
       --with-freetype=/usr/include/ \
       --with-jpeg=/usr/include/ \
+      --with-webp=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-enable gd \
     && apk del --no-cache \
@@ -19,11 +42,16 @@ RUN apk add --no-cache \
       libjpeg-turbo-dev \
       libpng-dev
 
-RUN apk add libzip-dev php7-exif
+RUN docker-php-ext-install \
+      exif \
+      pdo \
+      bcmath \
+      pdo_mysql \
+      zip \
+      intl \
+      iconv \
+      pcntl \
 
-RUN docker-php-ext-install pdo pdo_mysql zip bcmath exif
-
-RUN curl -s https://getcomposer.org/installer | php
-RUN mv composer.phar /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN rm -rf /tmp/*
