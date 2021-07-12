@@ -17,17 +17,17 @@ help: ## Show this help
 
 # --- [ Development tasks ] -------------------------------------------------------------------------------------------
 
-up:
+up: ## Start all containers foreground
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" up --no-recreate
+
+bg: ## Start all containers background
+	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" up -d --no-recreate
+
+restart: ## Restart all started containers
+	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" restart
 
 down: ## Stop all started for development containers
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" down
 
-build: ## Build
+build: ## Build images & create containers
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" build
-
-# restart: ## Restart all or list
-# 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" restart
-
-cmd:
-  $(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" $(runargs)
