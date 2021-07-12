@@ -48,5 +48,5 @@ Structure
     * php
         * Dockerfile — for build php image
         * php.ini — override php settings
-        * php.env - env for php.ini (for settings on only restart)
-        * opcache.ini – settings for opcache 
+        * php.env — env for php.ini (for settings on only restart)
+        * opcache.ini — settings for opcache 
