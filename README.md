@@ -26,11 +26,11 @@ The alpine image with:
 
 Operations
 ----------
-* make up (docker-compose up) — start all containers
-* make bg (docker-compose up -d) — start all containers in background
-* make restart (docker-compose restart) — restart all containers
-* make down (docker-compose down) — down all containers
-* make build (docker-compose build) — build all images & create containers
+* `make up` (docker-compose up) — start all containers
+* `make bg` (docker-compose up -d) — start all containers in background
+* `make restart` (docker-compose restart) — restart all containers
+* `make down` (docker-compose down) — down all containers
+* `make build` (docker-compose build) — build all images & create containers
 
 Structure
 ---------
