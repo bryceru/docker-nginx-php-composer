@@ -25,6 +25,11 @@ The alpine image with:
 * php.ini override with variables from .env file
 * Makefile for quick docker-compose operations
 
+Before start
+------------
+Copy .env.example to .env
+`cp .env.example .env`
+
 Operations
 ----------
 * `make up` (docker-compose up) — start all containers
