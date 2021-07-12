@@ -1,9 +1,25 @@
-NGINX PHP7 Composer
+NGINX PHP 7 Composer
 ===================
 
 The alpine image with:
 * Nginx
 * PHP 7.4 FPM
+    * exif    
+    * pdo
+    * bcmath
+    * pdo_mysql
+    * zip
+    * intl
+    * iconv 
+    * pcntl
+    * opcache
+    * acl
+    * curl
+    * gettext
+    * OpenSSL
+    * PostgreSQL extension 
+    * gd2 with png, jpeg, webp, freetype 
+    * ...etc
 * Composer 2
 * php.ini override with variables from .env file
 * Makefile for quick docker-compose operations
