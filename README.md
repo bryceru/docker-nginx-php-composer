@@ -1,4 +1,4 @@
-NGINX PHP 7 Composer
+NGINX PHP 7 Composer Percona
 ===================
 
 The alpine image with:
@@ -21,6 +21,7 @@ The alpine image with:
     * gd2 with png, jpeg, webp, freetype 
     * ...etc
 * Composer 2
+* Percona DB / MySQL
 * php.ini override with variables from .env file
 * Makefile for quick docker-compose operations
 
