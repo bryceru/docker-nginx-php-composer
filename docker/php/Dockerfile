@@ -65,11 +65,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 ADD php.ini "$PHP_INI_DIR/conf.d/99-php.over.ini"
 
 RUN apk del --no-cache autoconf \
-#     freetype-dev \
-#     libjpeg-turbo-dev \
-#     libpng-dev \
-#     libwebp-dev \
-#     freetype-dev \
      libzip-dev \
      icu-dev \
      libmcrypt-dev \
