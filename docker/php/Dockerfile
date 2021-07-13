@@ -62,7 +62,6 @@ RUN yes | pecl install xdebug \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-ADD opcache.ini "$PHP_INI_DIR/conf.d/opcache.ini"
 ADD php.ini "$PHP_INI_DIR/conf.d/99-php.over.ini"
 
 RUN apk del --no-cache autoconf \

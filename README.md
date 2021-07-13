@@ -1,5 +1,5 @@
-NGINX PHP 7 Composer Percona
-===================
+NGINX PHP 7 Composer Percona with compiled GD
+==============================================
 
 The alpine image with:
 * Nginx
@@ -42,8 +42,8 @@ Structure
 ---------
 * www — for your server files
 * .env — for full project & docker environment variables
-* docker — config files
-    * default — mounted nginx default conf
+* docker
+    * default.conf — mounted nginx default.conf
     * docker-compose.yml — main docker-compose config
     * php
         * Dockerfile — for build php image
