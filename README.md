@@ -1,5 +1,5 @@
-NGINX PHP 7 Composer Percona with compiled GD
-==============================================
+Docker compose NGINX PHP 7 Composer 2 Percona with compiled GD
+=
 
 The alpine image with:
 * Nginx
