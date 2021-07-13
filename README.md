@@ -40,13 +40,12 @@ Commands
 
 Structure
 -
-* www — for your server files
-* .env — for full project & docker environment variables
-* docker
-    * default.conf — mounted nginx default.conf
-    * docker-compose.yml — main docker-compose config
-    * php
-        * Dockerfile — for build php image
-        * php.ini — override php settings
-        * php.env — env for php.ini (for settings on only restart)
-        * opcache.ini — settings for opcache 
+* **www** — for your server files
+* **.env** — for full project & docker environment variables
+* **docker**
+    * **default.conf** — mounted nginx default.conf
+    * **docker-compose.yml** — main docker-compose config
+    * **php**
+        * **Dockerfile** — for build php image
+        * **php.ini** — override php settings
+        * **php.env** — env for php.ini (for settings on only restart) 
