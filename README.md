@@ -26,12 +26,12 @@ The alpine image with:
 * Makefile for quick docker-compose operations
 
 Before start
-------------
+-
 Copy .env.example to .env
 `cp .env.example .env`
 
-Operations
-----------
+Commands
+-
 * `make up` (docker-compose up) — start all containers
 * `make bg` (docker-compose up -d) — start all containers in background
 * `make restart` (docker-compose restart) — restart all containers
@@ -39,7 +39,7 @@ Operations
 * `make build` (docker-compose build) — build all images & create containers
 
 Structure
----------
+-
 * www — for your server files
 * .env — for full project & docker environment variables
 * docker
