@@ -48,4 +48,4 @@ Structure
     * **php**
         * **Dockerfile** — for build php image
         * **php.ini** — override php settings
-        * **php.env** — env for php.ini (for settings on only restart) 
+        * **php.env** — env for php.ini
