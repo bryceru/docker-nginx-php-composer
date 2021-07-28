@@ -29,7 +29,7 @@ bg: ## Start all containers background
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" up -d --no-recreate
 
 restart: ## Restart all started containers
-	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" restart -f
+	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" restart
 
 down: ## Stop all started for development containers
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" down
@@ -38,5 +38,4 @@ build: ## Build images & create containers
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" build
 
 dump:
-#	$(docker_bin) exec --env-file=".env" percona sh backup.sh
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" exec $(DB_CONTAINER_NAME) sh /var/backup/backup.sh

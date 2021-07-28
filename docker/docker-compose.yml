@@ -8,6 +8,7 @@ services:
     volumes:
       - ../www:/srv/www/
       - ./default.conf:/etc/nginx/conf.d/default.conf
+      - phpsocket:/var/run
     networks:
       - www
     depends_on:
@@ -20,6 +21,7 @@ services:
     volumes:
       - ../www:/srv/www/
       - ./default.conf:/etc/nginx/conf.d/default.conf
+      - phpsocket:/var/run
     networks:
       - www
     env_file:
@@ -27,9 +29,10 @@ services:
       - ./php/php.env
     environment:
       MYSQL_SERVER: percona
+      SMTP_SERVER: smtpserver
     depends_on:
       - percona
-      - mail
+      - smtpserver
 
   percona:
     image: percona
@@ -51,11 +54,11 @@ services:
 #      - www
 #    env_file: ../.env
 
-  mail:
+  smtpserver:
     image: namshi/smtp
     restart: always
     ports:
-      - 25:25
+      - 25
     networks:
       - www
     env_file: ../.env
@@ -65,3 +68,4 @@ networks:
 
 volumes:
   mysql:
+  phpsocket:
