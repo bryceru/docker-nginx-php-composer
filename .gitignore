@@ -1,2 +1,7 @@
-www/
+/www
+/backups
+!/backups/db/backup.sh
+
+/.env
+
 .idea

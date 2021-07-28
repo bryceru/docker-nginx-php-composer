@@ -8,6 +8,8 @@ SHELL = /bin/sh
 
 DOCKER_DIR := ./docker
 
+DB_CONTAINER_NAME := percona
+
 docker_bin := $(shell command -v docker 2> /dev/null)
 docker_compose_bin := $(shell command -v docker-compose 2> /dev/null)
 
@@ -17,6 +19,9 @@ help: ## Show this help
 
 # --- [ Development tasks ] -------------------------------------------------------------------------------------------
 
+force:## Start all containers with recreation
+	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" up
+
 up: ## Start all containers foreground
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" up --no-recreate
 
@@ -24,10 +29,14 @@ bg: ## Start all containers background
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" up -d --no-recreate
 
 restart: ## Restart all started containers
-	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" restart
+	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" restart -f
 
 down: ## Stop all started for development containers
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" down
 
 build: ## Build images & create containers
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" build
+
+dump:
+#	$(docker_bin) exec --env-file=".env" percona sh backup.sh
+	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" exec $(DB_CONTAINER_NAME) sh /var/backup/backup.sh

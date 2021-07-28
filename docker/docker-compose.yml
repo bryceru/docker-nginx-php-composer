@@ -25,21 +25,43 @@ services:
     env_file:
       - ../.env
       - ./php/php.env
+    environment:
+      MYSQL_SERVER: percona
     depends_on:
       - percona
+      - mail
 
   percona:
     image: percona
     ports:
-      - 33061:3306
+      - 3306
+    networks:
+      - www
     volumes:
-      - dbdata:/var/lib/mysql
+      - mysql:/var/lib/mysql
+      - ../backups/db/:/var/backup/
+    env_file: ../.env
+#
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8084:8080
+#    networks:
+#      - www
+#    env_file: ../.env
+
+  mail:
+    image: namshi/smtp
+    restart: always
+    ports:
+      - 25:25
     networks:
       - www
     env_file: ../.env
 
-volumes:
-  dbdata:
-
 networks:
   www:
+
+volumes:
+  mysql:
