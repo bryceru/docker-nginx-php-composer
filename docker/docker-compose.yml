@@ -4,11 +4,11 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - ${PORT}:80
+      - ${WWW_PORT}:80
     volumes:
       - ../www:/srv/www/
       - ./default.conf:/etc/nginx/conf.d/default.conf
-      - phpsocket:/var/run
+#      - phpsocket:/var/run
     networks:
       - www
     depends_on:
@@ -21,7 +21,7 @@ services:
     volumes:
       - ../www:/srv/www/
       - ./default.conf:/etc/nginx/conf.d/default.conf
-      - phpsocket:/var/run
+#      - phpsocket:/var/run
     networks:
       - www
     env_file:
@@ -57,8 +57,10 @@ services:
   smtpserver:
     image: namshi/smtp
     restart: always
+    environment:
+      MAILNAME: smtpserver
     ports:
-      - 25
+      - 25:25
     networks:
       - www
     env_file: ../.env
@@ -68,4 +70,4 @@ networks:
 
 volumes:
   mysql:
-  phpsocket:
+#  phpsocket:
