@@ -1,0 +1,31 @@
+sync:
+    defaults:
+      ignore:
+        vcs: true
+#      permissions:
+##        defaultFileMode: 644
+##        defaultDirectoryMode: 755
+#        defaultOwner: ruvasik
+#        defaultGroup: staff
+    codebase:
+      alpha: "/alpha"
+      beta: "/beta"
+      mode: "two-way-resolved"
+      ignore:
+        paths:
+          - "/vendor"
+          - "/var"
+          - "node_modules"
+          - .DS_Store # macOS files
+          - ._*
+          - .idea
+      configurationAlpha:
+        permissions:
+          defaultOwner: "id:501"
+          defaultGroup: "id:20"
+      configurationBeta:
+        permissions:
+          defaultFileMode: 666
+          defaultDirectoryMode: 777
+#          defaultOwner: "id:82"
+#          defaultGroup: "id:82"
