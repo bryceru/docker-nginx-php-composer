@@ -65,8 +65,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 ADD php.ini "$PHP_INI_DIR/conf.d/99-php.over.ini"
 
-RUN sed -i -e '/\[www\]/ { N; /.*/ { s||[www]\nlisten = /var/run/php7-fpm.sock\nlisten.mode = 0666| }}' /usr/local/etc/php-fpm.d/zz-docker.conf
-
 RUN apk del --no-cache autoconf \
      libzip-dev \
      libmcrypt-dev \
