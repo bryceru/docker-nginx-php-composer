@@ -1,4 +1,5 @@
 www/
 backups/
+!backups/db/backup.sh
 .idea
 .env
