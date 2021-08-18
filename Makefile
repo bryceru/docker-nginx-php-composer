@@ -2,7 +2,7 @@
 # Makefile readme (ru): <http://linux.yaroslavl.ru/docs/prog/gnu_make_3-79_russian_manual.html>
 # Makefile readme (en): <https://www.gnu.org/software/make/manual/html_node/index.html#SEC_Contents>
 
-.PHONY: help force up restart stop down command console logs tail shell
+.PHONY: help force up restart stop down command logs tail shell
 
 shell = /bin/sh
 
@@ -51,9 +51,6 @@ dump: ## Dump database
 command: ## Run commmand shell in php container // command "ls -la"
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" exec php sh -c "$(PARAMS)"
 
-console: ## Run commmand with console symfony in php container // console bolt:info
-	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" exec php sh -c "bin/console $(PARAMS)"
-
 logs: ## Show logs
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" logs $(list)
 
@@ -62,9 +59,5 @@ tail: ## Tail logs
 
 shell: ## Run shell for container // shell php
 	$(docker_compose_bin) -f "$(DOCKER_DIR)/docker-compose.yml" --env-file=".env" exec $(PARAMS) sh
-
-cache: ## Clean & warm up cache
-	make console cache:clear
-	make console cache:warmup
 
 %:;
