@@ -6,13 +6,12 @@ services:
     ports:
       - ${WWW_PORT}:80
     volumes:
+      - ../www:/srv/www
       - ./default.conf:/etc/nginx/conf.d/default.conf
       - phpsocket:/var/run
-      - codebase:/srv/www:ro
     networks:
       - default
     depends_on:
-      - mutagen
       - php
 
   php:
@@ -20,9 +19,9 @@ services:
       context: php
       dockerfile: Dockerfile
     volumes:
+      - ../../www:/srv/www
       - ./default.conf:/etc/nginx/conf.d/default.conf
       - phpsocket:/var/run
-      - codebase:/srv/www
     networks:
       - default
     env_file:
@@ -32,9 +31,18 @@ services:
       MYSQL_SERVER: percona
       SMTP_SERVER: smtpserver
     depends_on:
-      - mutagen
       - percona
       - smtpserver
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8084:8080
+    networks:
+      - default
+    env_file: ../.env
 
   percona:
     image: percona
@@ -58,19 +66,9 @@ services:
       - default
     env_file: ../.env
 
-  mutagen:
-    build:
-      context: mutagen
-      dockerfile: Dockerfile
-    privileged: true
-    volumes:
-      - ../www:/alpha
-      - codebase:/beta
-
 networks:
   default:
 
 volumes:
   mysql:
   phpsocket:
-  codebase:
