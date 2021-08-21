@@ -52,15 +52,15 @@ Operations
 * `make force` (docker-compose up) — Start all containers foreground with recreation
 * `make up` (docker-compose up --no-recreate) — Start all containers foreground
 * `make bg` (docker-compose up --no-recreate -d) — Start all containers background
-* `make restart list="php nginx"` (docker-compose up restart) — Restart all started containers
-* `make stop list=php` (docker-compose stop) — Stop all started containers
-* `make down` (docker-compose down) — Stop all started for development containers
+* `make restart list="php nginx"` (docker-compose up restart) — Restart all/selectted started containers
+* `make stop list=php` (docker-compose stop) — Stop all/selected started containers
+* `make down` (docker-compose down) — Stop **& destroy** **all** started containers
 * `make build` (docker-compose build) — Build images & create containers
 * `make dump` — Dump database
-* `make command "ls -la"` — Run commmand shell in php container
+* `make command "ls -la"` — Run command shell in php container
 * `make logs` — Show logs
 * `make tail` — Tail logs
-* `make shell php` — Run shell for container
+* `make shell php` — Run shell for container (see [Containers](#Containers))
 
 Structure
 ---------
