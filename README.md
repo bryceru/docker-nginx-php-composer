@@ -7,6 +7,15 @@ Solved local macOS docker performance problem.
 
 Easy on/off APC/OPCache/XDebug.
 
+Containers
+----------
+* nginx
+* php
+* adminer
+* percona
+* smtpserver
+* mutagen
+
 Branches
 --------
 * `master` — main branch (php on 9000 port)
