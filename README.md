@@ -1,6 +1,12 @@
 NGINX PHP 7 Composer Percona
 ============================
 
+Ready develop environment for symfony, laravel, Bolt CMS.
+
+Solved local macOS docker performance problem.
+
+Easy on/off APC/OPCache/XDebug.
+
 Branches
 --------
 * `master` — main branch (php on 9000 port)
